@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receita Bolo de Chocolate</title>
+    <style>
+        body {
+            background-color: #f7f7f9;
+            font-family: Arial, sans-serif;
+            color: #2c3e50;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        
+        /* CARD PRINCIPAL (FRONTAL) */
+        .card-receita {
+            background-color: #ffffff;
+            border-radius: 16px;
+            width: 320px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            overflow: hidden;
+            display: block; /* Começa visível */
+        }
+        .imagem-comida {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        .conteudo-card {
+            padding: 20px;
+        }
+        .categoria {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #e66e22;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin: 0 0 8px 0;
+        }
+        .titulo-receita {
+            font-size: 20px;
+            color: #2c3e50;
+            margin: 0 0 10px 0;
+        }
+        .descricao {
+            font-size: 14px;
+            color: #7f8c8d;
+            line-height: 1.5;
+            margin: 0 0 20px 0;
+        }
+        .botao-receita {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #e66e22;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        /* TELA DA RECEITA DETALHADA */
+        .container-preparo {
+            max-width: 500px;
+            background-color: #ffffff;
+            margin: 0 auto;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            display: none; /* Começa escondida */
+        }
+        .botao-voltar {
+            display: inline-block;
+            color: #e66e22;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+        h1 {
+            font-size: 24px;
+            color: #e66e22;
+            margin-top: 24px;
+        }
+        h2 {
+            font-size: 18px;
+            color: #e66e22;
+            margin-top: 24px;
+        }
+        ul, ol {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        li {
+            margin-bottom: 8px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .concluido {
+            text-decoration: line-through;
+            color: #aaa;
+        }
+        .info-receita {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f7f7f9;
+        }
+        .info-item {
+            font-size: 14px;
+            color: #7f8c8d;
+            font-weight: bold;
+        }
+        .subtitulo-ingredientes {
+            font-size: 15px;
+            color: #34495e;
+            font-weight: bold;
+            margin-top: 15px;
+            text-align: left;
+            display: block;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. CARD FRONTAL (VAI SUMIR AO CLICAR) -->
+    <div class="card-receita" id="cardFrontal">
+        <img class="imagem-comida" src="bolo.jpg" alt="Bolo de Chocolate">
+        <div class="conteudo-card">
+            <p class="categoria">Sobremesa / Doces</p>
+            <h2 class="titulo-receita">Bolo de Chocolate Fofinho</h2>
+            <p class="descricao">Uma receita clássica, super úmida e com uma cobertura irresistível. Perfeito para o café da tarde.</p>
+            <button class="botao-receita" onclick="mostrarReceita()">Ver Receita Completa</button>
+        </div>
+    </div>
+
+    <!-- 2. PÁGINA DA RECEITA COMPLETA (VAI APARECER AO CLICAR) -->
+    <div class="container-preparo" id="telaReceita">
+        <button class="botao-voltar" onclick="mostrarCard()">← Voltar para o Card</button>
+        
+        <h1>Bolo de Chocolate Fofinho</h1>
+        
+        <div class="info-receita">
+            <div class="info-item">⏱️ Preparo: 40 min</div>
+            <div class="info-item">🍰 Rendimento: 12 fatias</div>
+        </div>
+
+        <h2>Ingredientes</h2>
+        
+        <div class="subtitulo-ingredientes">Para a Massa:</div>
+        <ul>
+            <li onclick="marcarItem(this)">3 ovos</li>
+            <li onclick="marcarItem(this)">1 xícara de óleo</li>
+            <li onclick="marcarItem(this)">1 xícara de leite morno</li>
+            <li onclick="marcarItem(this)">2 xícaras de açúcar</li>
+            <li onclick="marcarItem(this)">1 xícara de chocolate em pó</li>
+            <li onclick="marcarItem(this)">2 xícaras de farinha de trigo</li>
+            <li onclick="marcarItem(this)">1 colher (sopa) de fermento em pó</li>
+        </ul>
+
+        <div class="subtitulo-ingredientes">Para a Cobertura:</div>
+        <ul>
+            <li onclick="marcarItem(this)">1 lata de leite condensado</li>
+            <li onclick="marcarItem(this)">1 colher (sopa) de manteiga</li>
+            <li onclick="marcarItem(this)">3 colheres (sopa) de chocolate em pó</li>
+            <li onclick="marcarItem(this)">1 caixinha de creme de leite</li>
+            <li onclick="marcarItem(this)">Chocolate granulado para decorar</li>
+        </ul>
+
+        <h2>Modo de Preparo</h2>
+        <ol>
+            <li>Bata no liquidificador os ovos, o óleo, o leite, o açúcar e o chocolate em pó até ficar homogêneo.</li>
+            <li>Despeje a mistura em uma tigela e adicione a farinha de trigo aos poucos, mexendo bem.</li>
+            <li>Adicione o fermento em pó por último e misture delicadamente.</li>
+            <li>Despeje a massa em uma forma untada e enfarinhada.</li>
+            <li>Asse em forno preaquecido a 180°C por aproximadamente 40 minutos.</li>
+        </ol>
+    </div>
+
+    <!-- CONTROLE DAS TELAS E DO RISCO -->
+    <script>
+        function mostrarReceita() {
+            document.getElementById('cardFrontal').style.display = 'none';
+            document.getElementById('telaReceita').style.display = 'block';
+        }
+
+        function mostrarCard() {
+            document.getElementById('telaReceita').style.display = 'none';
+            document.getElementById('cardFrontal').style.display = 'block';
+        }
+
+        function marcarItem(elemento) {
+            elemento.classList.toggle('concluido');
+        }
+    </script>
+</body>
+</html>
